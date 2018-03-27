@@ -20,19 +20,27 @@ public final class RawProtoStreamReaderImpl implements RawProtoStreamReader {
    }
 
    public static RawProtoStreamReader newInstance(InputStream input) {
-      return new RawProtoStreamReaderImpl(CodedInputStream.newInstance(input));
+      CodedInputStream codedInputStream = CodedInputStream.newInstance(input);
+      codedInputStream.setSizeLimit(268435456);
+      return new RawProtoStreamReaderImpl(codedInputStream);
    }
 
    public static RawProtoStreamReader newInstance(byte[] buf) {
-      return new RawProtoStreamReaderImpl(CodedInputStream.newInstance(buf));
+      CodedInputStream codedInputStream = CodedInputStream.newInstance(buf);
+      codedInputStream.setSizeLimit(268435456);
+      return new RawProtoStreamReaderImpl(codedInputStream);
    }
 
    public static RawProtoStreamReader newInstance(byte[] buf, int off, int len) {
-      return new RawProtoStreamReaderImpl(CodedInputStream.newInstance(buf, off, len));
+      CodedInputStream codedInputStream = CodedInputStream.newInstance(buf, off, len);
+      codedInputStream.setSizeLimit(268435456);
+      return new RawProtoStreamReaderImpl(codedInputStream);
    }
 
    public static RawProtoStreamReader newInstance(ByteBuffer buf) {
-      return new RawProtoStreamReaderImpl(CodedInputStream.newInstance(buf));
+      CodedInputStream codedInputStream = CodedInputStream.newInstance(buf);
+      codedInputStream.setSizeLimit(268435456);
+      return new RawProtoStreamReaderImpl(codedInputStream);
    }
 
    public CodedInputStream getDelegate() {
